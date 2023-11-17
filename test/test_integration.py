@@ -50,3 +50,24 @@ def test_find_phone_numbers_by_name():
     diary.add_entry("Title", "Dear Diary day one Jane: 01222 555 555 Sandra: 01333 555 555")
     result = diary.find_phone_number_by_name("Jane")
     assert result == ["Jane: 01222 555 555"]
+
+def test_find_best_entry():
+    diary = Diary()
+    diary.add_entry("Title", "Dear Diary, day 1")
+    diary.add_entry("Title2", "Dear")
+    diary.add_entry("Title", "Hello, world!")
+    result = diary.best_entry_by_minutes(1, 1)
+    assert result == "Dear"   
+
+
+# def test_find_best_entry():
+#     diary = Diary()
+#     diary_entry1 = DiaryEntry("Title", "Dear Diary, day 1")
+#     diary_entry2 = DiaryEntry("Title2", "Dear")
+#     diary_entry3 = DiaryEntry("Title", "Hello, world!")
+
+#     diary.add(diary_entry1)
+#     diary.add(diary_entry2)
+#     diary.add(diary_entry3)
+#     result = diary.find_best_entry_for_reading_time(1, 2)
+#     assert result == "Hello, world!"

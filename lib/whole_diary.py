@@ -37,9 +37,23 @@ class Diary:
                     self.complete_todos.append(todo.todo)
         return self.complete_todos
 
-    def best_entry_by_minutes(self,wpm,minutes):
-        #reading_chunk method
-        pass
+    def best_entry_by_minutes(self, wpm, minutes):
+        self.minutes_per_entry = {}
+
+        for entry in self.diary_entries:
+            total_num_words = 0
+            for content in entry.content:
+                words = content.split()
+                num_words = len(words)
+                total_num_words += num_words
+
+            entry_minutes = total_num_words / wpm
+            self.minutes_per_entry[entry_minutes] = entry.content
+
+        self.sorted_by_minutes = dict(sorted(self.minutes_per_entry.items()))
+        for minute in self.sorted_by_minutes:
+            if minute > minutes:
+                return self.sorted_by_minutes[minute]    
 
     def find_phone_numbers(self):
         self.phone_numbers = []
