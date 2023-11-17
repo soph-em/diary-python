@@ -48,6 +48,10 @@ class Diary:
                 self.phone_numbers.append(f"{contact.name} {contact.number}")
         return self.phone_numbers
 
-    def find_phone_number_by_name(self, name):
-        #input name to find phone number
-        pass
+    def find_phone_number_by_name(self, search_name):
+        self.phone_numbers = []
+        for entry in self.diary_entries:
+            for contact in entry.contacts:
+                if search_name in contact.name:
+                    self.phone_numbers.append(f"{contact.name} {contact.number}")
+        return self.phone_numbers

@@ -44,3 +44,9 @@ def test_find_phone_numbers():
     diary.add_entry("Title", "Dear Diary day one Jane: 01222 555 555 Sandra: 01333 555 555")
     result = diary.find_phone_numbers()
     assert result == ["Jane: 01222 555 555", "Sandra: 01333 555 555"]
+
+def test_find_phone_numbers_by_name():
+    diary = Diary()
+    diary.add_entry("Title", "Dear Diary day one Jane: 01222 555 555 Sandra: 01333 555 555")
+    result = diary.find_phone_number_by_name("Jane")
+    assert result == ["Jane: 01222 555 555"]
