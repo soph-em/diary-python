@@ -16,21 +16,15 @@ class Diary:
             if keyword in entry.title:
                 self.search_results.append(entry.content)
         return self.search_results
-        # for index, entry in enumerate(self.diary_entries.content):
-        #     if keyword in entry:
-        #         print(self.diary_entries[index].content)
-                # self.search_results.append(se)
 
-        pass # No code here yet
-        #     self.search_results = []
-        # for key in self.track_list:
-        #     if keyword in key:
-        #         self.search_results.append(f"{key} by {self.track_list[key]}")
-        # return self.search_results
-
-    def incomplete_todos():
-        #list of todos with false
-        pass
+    def incomplete_todos(self):
+        self.incomplete_todos = []
+        for entry in self.diary_entries:
+            entry.make_todo()
+            for todo in entry.todos:
+                if todo.complete == False:
+                    self.incomplete_todos.append(todo.todo)
+        return self.incomplete_todos
 
     def complete_todos():
         #list of todos with true
