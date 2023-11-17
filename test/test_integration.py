@@ -25,14 +25,16 @@ def test_return_list_complete_todos():
     diary.add_entry("Day 1", "Hello, Diary. Today I... #TODO laundry")
     diary.add_entry("Day 2", "Hello, Diary 2. Today I...")
     result = diary.complete_todos()
+
     assert result == []
 
-# def test_mark_complete_and_return():
-#     diary = Diary()
-#     diary.add_entry("Day 1", "Hello, Diary. Today I... #TODO laundry")
-#     diary.add_entry("Day 2", "Hello, Diary 2. Today I...")
-#     # print(diary.diary_entries[0].todos)
+def test_mark_complete_and_return():
+    diary = Diary()
+    diary.add_entry("Day 1", "Hello, Diary. Today I... #TODO laundry")
+    diary.add_entry("Day 2", "Hello, Diary 2. Today I...")
+
+    diary.diary_entries[0].todos[0].mark_complete()
+    result = diary.complete_todos()
+    print(diary.diary_entries[0].todos[0].complete)
     
-#     diary.diary_entries[0].todos[0].mark_complete()
-#     result = diary.complete_todos()
-#     assert result == ['laundry']
+    assert result == ['laundry']

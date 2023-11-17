@@ -8,7 +8,10 @@ class Diary:
         self.contacts = []
 
     def add_entry(self, title, entry):
-        self.diary_entries.append(Diary_Entry(title, entry))
+        diary_entry = Diary_Entry(title, entry)
+        self.diary_entries.append(diary_entry)
+        # for entry in self.diary_entries:
+        diary_entry.make_todo()
 
     def find_entry_by_title(self, keyword):
         self.search_results = []
@@ -20,15 +23,20 @@ class Diary:
     def incomplete_todos(self):
         self.incomplete_todos = []
         for entry in self.diary_entries:
-            entry.make_todo()
+            # entry.make_todo()
             for todo in entry.todos:
                 if todo.complete == False:
                     self.incomplete_todos.append(todo.todo)
         return self.incomplete_todos
 
-    def complete_todos():
-        #list of todos with true
-        pass
+    def complete_todos(self):
+        self.complete_todos = []
+
+        for entry in self.diary_entries:
+            for todo in entry.todos:
+                if todo.complete == True:
+                    self.complete_todos.append(todo.todo)
+        return self.complete_todos
 
     def best_entry_by_minutes(self,wpm,minutes):
         #reading_chunk method
