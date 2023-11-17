@@ -38,3 +38,9 @@ def test_mark_complete_and_return():
     print(diary.diary_entries[0].todos[0].complete)
     
     assert result == ['laundry']
+
+def test_find_phone_numbers():
+    diary = Diary()
+    diary.add_entry("Title", "Dear Diary day one Jane: 01222 555 555 Sandra: 01333 555 555")
+    result = diary.find_phone_numbers()
+    assert result == ["Jane: 01222 555 555", "Sandra: 01333 555 555"]

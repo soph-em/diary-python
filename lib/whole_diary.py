@@ -10,8 +10,8 @@ class Diary:
     def add_entry(self, title, entry):
         diary_entry = Diary_Entry(title, entry)
         self.diary_entries.append(diary_entry)
-        # for entry in self.diary_entries:
         diary_entry.make_todo()
+        diary_entry.make_contact()
 
     def find_entry_by_title(self, keyword):
         self.search_results = []
@@ -23,7 +23,6 @@ class Diary:
     def incomplete_todos(self):
         self.incomplete_todos = []
         for entry in self.diary_entries:
-            # entry.make_todo()
             for todo in entry.todos:
                 if todo.complete == False:
                     self.incomplete_todos.append(todo.todo)
@@ -42,9 +41,12 @@ class Diary:
         #reading_chunk method
         pass
 
-    def find_phone_numbers():
-        #shows list of phone numbers
-        pass
+    def find_phone_numbers(self):
+        self.phone_numbers = []
+        for entry in self.diary_entries:
+            for contact in entry.contacts:
+                self.phone_numbers.append(f"{contact.name} {contact.number}")
+        return self.phone_numbers
 
     def find_phone_number_by_name(self, name):
         #input name to find phone number
